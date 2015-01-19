@@ -23,17 +23,21 @@ namespace Games.TestGame
             Debug.Log("In GameStage");
             Graphics.SetClearColor(Game.Swatches.ClearColor);
 
-            float Padding = 10.0f;
+            float Padding = 20.0f; //just test shit k
+
             Wall wall = Add(new Wall(), 1);
-            wall.Position = new Vector2f(40f, 40f);
+            wall.Position = new Vector2f(Padding, Padding);
             Debug.Log("Wall created");
+
+            Player player = Add(new Player(), 1);
+            player.Position = new Vector2f(Padding * 2, Padding * 3);
+            Debug.Log("Player created");
         }
 
         // called each tick
         protected override void OnUpdate()
         {
             base.OnUpdate();
-
         }
 
         // called when this stage is rendered
@@ -43,4 +47,4 @@ namespace Games.TestGame
 
         }
     }
-}
+}

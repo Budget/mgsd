@@ -14,7 +14,7 @@ namespace Games.TestGame
         public Swatches(PaletteBuilder palette)
         {
             ClearColor = palette.Add(0x111111, 0x111111, 0x111111);
-            Player = palette.Add(0xcccccc, 0x222222, 0xcc0000);
+            Player = palette.Add(0x84A9BC, 0x2D322E, 0x553E2C);
             Wall = palette.Add(0xcc4444, 0x992222, 0xff0000);
 
             White = palette.Add(0xffffff, 0xffffff, 0xffffff);
