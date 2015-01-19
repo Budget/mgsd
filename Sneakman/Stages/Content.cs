@@ -51,13 +51,12 @@ namespace Games.TestGame
             }
 
             Game.SetStage(new MenuStage(Game));
-
         }
 
         // called when this stage is created
         public Content(Main game) : base(game)
         {
-
+            
         }
 
         // called when this stage is entered

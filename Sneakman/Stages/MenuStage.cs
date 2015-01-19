@@ -68,6 +68,7 @@ namespace Games.TestGame
 
             FlashText(menuText2, "Press START", Graphics.Size / 2 + new Vector2i(-menuText2.Width / 2, 10)); // will be changed and added into a stack function that makes it all neat
 
+            if (Controls.A.JustPressed) Game.SetStage(new GameStage(Game));
         }
 
         // called when this stage is rendered
