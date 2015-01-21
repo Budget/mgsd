@@ -10,7 +10,7 @@ namespace Games.TestGame
         Version = "0.0.2.1",
         UpdateRate = 60
     )]
-    [GraphicsInfo(Width = 256, Height = 240)]
+    [GraphicsInfo(Width = 240, Height = 240)]
     public class Main : Game
     {
         public Swatches Swatches { get; private set; }
