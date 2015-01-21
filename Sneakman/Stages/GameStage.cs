@@ -36,7 +36,7 @@ namespace Games.TestGame
 
             Map testMap = new Map();
             testMap.usedMap = MapLoader.Load("Games/Sneakman/Resources/maps/test.txt");
-            testMap.Populate();
+            testMap.Populate(this);
         }
 
         // called each tick
