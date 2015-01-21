@@ -30,7 +30,7 @@ namespace Games.TestGame
             // need to set LocalBounds because we draw our own sprites
             var size = (Vector2f)(_sprite.Size * 0.75f);
             LocalBounds = new RectF(-(size / 2), size);
-        }        
+        }
 
         protected override void OnUpdate(double dt)
         {

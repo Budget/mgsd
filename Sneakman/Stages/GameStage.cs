@@ -25,13 +25,18 @@ namespace Games.TestGame
 
             float Padding = 20.0f; //just test shit k
 
+            /*
             Wall wall = Add(new Wall(), 1);
             wall.Position = new Vector2f(Padding, Padding);
-            Debug.Log("Wall created");
+            Debug.Log("Wall created");*/
 
             Player player = Add(new Player(), 1);
             player.Position = new Vector2f(Padding * 2, Padding * 3);
             Debug.Log("Player created");
+
+            Map testMap = new Map();
+            testMap.usedMap = MapLoader.Load("Games/Sneakman/Resources/maps/test.txt");
+            testMap.Populate();
         }
 
         // called each tick
