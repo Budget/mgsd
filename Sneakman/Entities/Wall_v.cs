@@ -1,57 +1,40 @@
 using System;
-using System.Collections;
 
 using GameAPI;
 using GameAPI.BudgetBoy;
 
 namespace Games.TestGame
 {
-    public class Player : Entity
+    public class Wall_v : Entity
     {
-        public new Main Game { get { return (Main) base.Game; } }
+        public new Main Game { get { return (Main)base.Game;  } }
 
         protected Sprite _sprite;
-       
-        public Player()
-        {
-            
+
+        public Wall_v()
+        {        
+    
         }
 
-        // called when this entity is added to a stage
+        //called when this entity is added to a stage
         protected override void OnEnterStage(Stage stage)
         {
             base.OnEnterStage(stage);
-
-            StartCoroutine(RotCoro);
         }
 
         protected override void OnLoadGraphics(Graphics graphics)
         {
-            Image image = graphics.GetImage("Resources", "player");
-            _sprite = new Sprite(image, Game.Swatches.Player);
+            Image image = graphics.GetImage("Resources", "wall_v");
+            _sprite = new Sprite(image, Game.Swatches.Wall);
 
             // need to set LocalBounds because we draw our own sprites
-            var size = (Vector2f)(_sprite.Size * 0.75f);
-            LocalBounds = new RectF(-(size / 2), size);
-        }
-
-        protected override void OnLoadAudio(Audio audio)
-        {
-
+            var size = (Vector2f)(_sprite.Size);
+            LocalBounds = new RectF(size , size);
         }
 
         protected override void OnUpdate(double dt)
         {
-            base.OnUpdate(dt);            
-        }
-
-        private IEnumerator RotCoro() //testing rotation of CenterSprite
-        {
-            while (true)
-            {
-                _sprite.Rotation++;
-                yield return Delay(0.5);
-            }
+            base.OnUpdate(dt);
         }
 
         protected override void OnRender(Graphics graphics)

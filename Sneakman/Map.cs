@@ -21,10 +21,16 @@ namespace Games.TestGame
 
                 for(int x = 0; x < 15; x++)
                 {
-                    if(itemsOnLine[x] == '1')
+                    switch (itemsOnLine[x])
                     {
-                        Wall wall = stage.Add(new Wall(), 1);
-                        wall.Position = new Vector2f(16 + (x * 16f), (16f - y) * 16f - 16f); //hooray for magic numbers
+                        case '1':
+                            Wall wall = stage.Add(new Wall(), 1);
+                            wall.Position = new Vector2f(16 + (x * 16f), (16f - y) * 16f - 16f);
+                            break;
+                        case '2':
+                            Wall_v wallV = stage.Add(new Wall_v(), 1);
+                            wallV.Position = new Vector2f(16 + (x * 16f), (16f - y) * 16f - 16f);
+                            break;
                     }
                 }
             }

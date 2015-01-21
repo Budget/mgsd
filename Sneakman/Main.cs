@@ -7,7 +7,7 @@ namespace Games.TestGame
     [GameInfo(
         Title = "Sneakman: Tactical Man Avoidance",
         AuthorName = "Psoeter n Krix",
-        Version = "0.0.2.1",
+        Version = "0.0.3.1",
         UpdateRate = 60
     )]
     [GraphicsInfo(Width = 240, Height = 240)]
