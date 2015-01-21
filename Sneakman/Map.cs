@@ -5,7 +5,7 @@ using GameAPI.BudgetBoy;
 
 namespace Games.TestGame
 {
-    public class Map : MapManager
+    public class Map
     {
         public Map(){}
 
@@ -15,7 +15,7 @@ namespace Games.TestGame
         {
             if (usedMap == null) return;
 
-            List<GameAPI.BudgetBoy.Entity> entityList;
+            Wall wall;
             
             char[] itemsOnLine;
 
@@ -27,8 +27,8 @@ namespace Games.TestGame
                 {
                     if(itemsOnLine[j] == '1')
                     {
-                        entityList.Add(GameAPI.BudgetBoy.Entity.Add(new Wall(), 1))
-                                  .Position = new Vector2f((16f - i) * 16f, j * 16f);
+                        wall = Add(new Wall(), 1);
+                        wall.Position = new Vector2f((16f - i) * 16f, j * 16f);
                     }
                 }
             }
