@@ -15,11 +15,11 @@ namespace Games.TestGame
         {
             if (usedMap == null) return;
 
-            for(int i = 0; i < 15; i++)
+            for(int i = 0; i < 16; i++)
             {
                 char[] itemsOnLine = usedMap[i].ToCharArray();
 
-                for(int j = 0; j < 15; j++)
+                for(int j = 0; j < 16; j++)
                 {
                     if(itemsOnLine[j] == '1')
                     {

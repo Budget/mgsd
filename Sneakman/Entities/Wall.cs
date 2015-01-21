@@ -28,8 +28,8 @@ namespace Games.TestGame
             _sprite = new Sprite(image, Game.Swatches.Wall);
 
             // need to set LocalBounds because we draw our own sprites
-            var size = (Vector2f)(_sprite.Size * 0.75f);
-            LocalBounds = new RectF(-(size / 2), size);
+            var size = (Vector2f)(_sprite.Size);
+            LocalBounds = new RectF(size , size);
         }
 
         protected override void OnUpdate(double dt)
@@ -59,7 +59,7 @@ namespace Games.TestGame
                 size = new Vector2i(sprite.Height, sprite.Width);
             }
 
-            sprite.Position = (Vector2i)Position - (size / 2);
+            sprite.Position = (Vector2i)Position - (size);
         }
     }
 }
