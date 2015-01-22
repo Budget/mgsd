@@ -11,6 +11,18 @@ namespace Games.TestGame
         public new Main Game { get { return (Main) base.Game; } }
 
         protected Sprite _sprite;
+
+        double _rotation;
+        double _rotRadians;
+
+        float _rotationSpeed;
+        float _moveSpeed;
+
+        Axis2 _moveAxis;
+
+        Vector2f _radianAngle;
+        
+
        
         public Player()
         {
@@ -22,7 +34,12 @@ namespace Games.TestGame
         {
             base.OnEnterStage(stage);
 
-            StartCoroutine(RotCoro);
+            _moveAxis = stage.Game.Controls.LeftAnalog;
+
+            _rotationSpeed = 180;
+            _moveSpeed = 100;
+
+            //StartCoroutine(RotCoro);
         }
 
         protected override void OnLoadGraphics(Graphics graphics)
@@ -42,16 +59,62 @@ namespace Games.TestGame
 
         protected override void OnUpdate(double dt)
         {
-            base.OnUpdate(dt);            
+            base.OnUpdate(dt);
+            
+    
+            if(_moveAxis.X.IsPositive)
+            {
+                _rotation -= (_moveAxis.X.Value * dt) * _rotationSpeed;
+            }
+            else if(_moveAxis.X.IsNegative)
+            {
+                _rotation -= (_moveAxis.X.Value * dt) * _rotationSpeed;
+            }
+
+            if(_rotation >= 360)
+            {
+                _rotation -= 360;
+            }
+            else if(_rotation < 0)
+            {
+                _rotation += 360;
+            }
+
+            if (_moveAxis.Y.IsPositive)
+            {
+                
+            }
+            else if (_moveAxis.Y.IsNegative)
+            {
+               
+            }
+
+            _rotRadians = (Math.PI / 180) * _rotation;
+            var returnedRadians = RotateVector2f(1.0,1.0,_rotRadians);
+            _radianAngle = new Vector2f((float)returnedRadians[0], (float)returnedRadians[1]);
+           
         }
 
-        private IEnumerator RotCoro() //testing rotation of CenterSprite
+        /*private IEnumerator RotCoro() //testing rotation of CenterSprite
         {
             while (true)
             {
                 _sprite.Rotation++;
                 yield return Delay(0.5);
             }
+        }*/
+
+        Double[] RotateVector2f(double x, double y, double degrees)
+        {
+            double[] result = new double[2];
+            result[0] = x * Math.Cos(degrees) - y * Math.Sin(degrees);
+            result[1] = x * Math.Sin(degrees) + y * Math.Cos(degrees);
+
+            return result;
+
+            //Debug.Log(newRotation);
+
+
         }
 
         protected override void OnRender(Graphics graphics)
@@ -60,6 +123,9 @@ namespace Games.TestGame
 
             CenterSprite(_sprite);
             _sprite.Render(graphics);
+
+            Game.Graphics.DrawLine(Game.Swatches.White, 1, Position, new Vector2f(Position.X, Position.Y) + _radianAngle*5);
+            
         }
 
         private void CenterSprite(Sprite sprite)
@@ -76,7 +142,7 @@ namespace Games.TestGame
                 size = new Vector2i(sprite.Height, sprite.Width);
             }
 
-            sprite.Position = (Vector2i)Position - (size);
+            sprite.Position = (Vector2i)Position - (size / 2);
         }
     }
 }
