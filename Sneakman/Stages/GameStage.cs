@@ -32,8 +32,8 @@ namespace Games.TestGame
 
             
 
-            Map testMap = new Map();
-            testMap.usedMap = MapLoader.Load("Games/Sneakman/Resources/maps/test.txt");
+            Map testMap = Add(new Map(), 1);
+            testMap.usedMap = MapLoader.Load("Games/Sneakman/Resources/maps/door.txt");
             testMap.Populate(this);
 
             Player player = Add(new Player(), 1);

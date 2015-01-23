@@ -1,19 +1,27 @@
-using System;
-
 using GameAPI;
 using GameAPI.BudgetBoy;
 
 namespace Games.TestGame
 {
-    public class Wall_v : Entity
+    public class Door : Entity
     {
-        public new Main Game { get { return (Main)base.Game;  } }
+        public new Main Game { get { return (Main)base.Game; } }
 
         protected Sprite _sprite;
 
-        public Wall_v()
-        {        
-    
+        public enum Orientation
+        {
+            Top,
+            Right,
+            Bottom,
+            Left
+        }
+
+        private Orientation _reqOri;
+
+        public Door()
+        {
+            //_reqOri = ori;
         }
 
         //called when this entity is added to a stage
@@ -24,12 +32,12 @@ namespace Games.TestGame
 
         protected override void OnLoadGraphics(Graphics graphics)
         {
-            Image image = graphics.GetImage("Resources", "wall_v");
-            _sprite = new Sprite(image, Game.Swatches.Wall);
-
+            Image image = graphics.GetImage("Resources", "door");
+            _sprite = new Sprite(image, Game.Swatches.Door);
+            
             // need to set LocalBounds because we draw our own sprites
             var size = (Vector2f)(_sprite.Size);
-            LocalBounds = new RectF(size , size);
+            LocalBounds = new RectF(size, size);
         }
 
         protected override void OnUpdate(double dt)
