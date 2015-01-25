@@ -1,5 +1,4 @@
-﻿using GameAPI;
-using GameAPI.BudgetBoy;
+﻿using GameAPI.BudgetBoy;
 
 namespace Games.TestGame
 {

@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-
 using GameAPI;
 using GameAPI.BudgetBoy;
 
@@ -30,10 +26,8 @@ namespace Games.TestGame
             wall.Position = new Vector2f(Padding, Padding);
             Debug.Log("Wall created");*/
 
-            
 
             Map testMap = Add(new Map(), 1);
-            testMap.usedMap = MapLoader.Load("Games/Sneakman/Resources/maps/door.txt");
             testMap.Populate(this);
 
             Player player = Add(new Player(), 1);

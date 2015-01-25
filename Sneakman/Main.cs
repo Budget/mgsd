@@ -7,7 +7,7 @@ namespace Games.TestGame
     [GameInfo(
         Title = "Sneakman: Tactical Man Avoidance",
         AuthorName = "Psoeter n Krix",
-        Version = "0.0.3.1",
+        Version = "0.0.4.1",
         UpdateRate = 60
     )]
     [GraphicsInfo(Width = 240, Height = 240)]
@@ -23,6 +23,24 @@ namespace Games.TestGame
         protected override void OnReset()
         {
             SetStage(new Content(this));
+        }
+        
+        protected override void OnRegisterResourceTypes(ArchiveLibrary library)
+        {
+            base.OnRegisterResourceTypes(library);
+
+            library.Register<MapResource>(ResourceFormat.Default, MapResource.Save, MapResource.Load, ".map");
+            Debug.Log("Registered.");
+        }
+        public static MapResource MapR;
+
+        protected override void OnLoadResources(ResourceVolume volume)
+        {
+            base.OnLoadResources(volume);
+            MapR = volume.Get<MapResource>("Resources", "maps", "test");
+            Debug.Log("Loaded test.map.");
+
+            Debug.Log(MapR.Tiles.ToString());
         }
     }
 }

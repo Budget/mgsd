@@ -15,47 +15,31 @@ namespace Games.TestGame
 
         public void Populate(Stage stage)
         {
+            MapResource map = Main.MapR;
             Debug.Log("Populating...");
-            if (usedMap == null) return;
 
-            for (int y = 0; y < 15; y++)
+            for (int x = 0; x < map.Cols; x++)
             {
-                char[] itemsOnLine = usedMap[y].ToCharArray();
-
-                for (int x = 0; x < 15; x++)
+                for (int y = 0; y < map.Rows; y++)
                 {
-                    switch (itemsOnLine[x])
+                    switch (map.Tiles[x, y])
                     {
                         case '1':
-                            tilemap.SetTile(x, 14 - y, _wall, Game.Swatches.Wall);
+                            tilemap.SetTile(y, map.Cols - 2 - x, _wall, Game.Swatches.Wall);
                             Wall wall = stage.Add(new Wall(), 1);
                             wall.Position = new Vector2f(16 + (x * 16f), (16f - y) * 16f - 16f);
                             Debug.Log("Set wall.");
                             break;
                         case '2':
-                            tilemap.SetTile(x, 14 - y, _wallV, Game.Swatches.Wall);
+                            tilemap.SetTile(y, map.Cols - 2 - x, _wallV, Game.Swatches.Wall);
                             Wall wallV = stage.Add(new Wall(), 1);
                             wallV.Position = new Vector2f(16 + (x * 16f), (16f - y) * 16f - 16f);
                             Debug.Log("Set wallV.");
                             break;
                         case '3':
-                            tilemap.SetTile(x, 14 - y, _door, Game.Swatches.Door); //Gonna take this back out since door needs to be an entity
+                            tilemap.SetTile(x, map.Cols - 2 - y, _door, Game.Swatches.Door); //Gonna take this back out since door needs to be an entity
                             Debug.Log("Set door.");
                             break;
-                        /*
-                        case '1':
-                            Wall wall = stage.Add(new Wall(), 1);
-                            wall.Position = new Vector2f(16 + (x * 16f), (16f - y) * 16f - 16f);
-                            break;
-                        case '2':
-                            Wall_v wallV = stage.Add(new Wall_v(), 1);
-                            wallV.Position = new Vector2f(16 + (x * 16f), (16f - y) * 16f - 16f);
-                            break;
-                        case '3':
-                            Door door = stage.Add(new Door(), 1);
-                            door.Position = new Vector2f(16 + (x * 16f), (16f - y) * 16f - 16f);
-                            break; 
-                         */
                     }
                 }
             }
