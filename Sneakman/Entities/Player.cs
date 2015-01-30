@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 
 using GameAPI;
 using GameAPI.BudgetBoy;
@@ -20,7 +19,7 @@ namespace Games.TestGame
 
         Axis2 _moveAxis;
 
-        Vector2f _radianAngle;
+        Vector2F _radianAngle;
         
 
        
@@ -44,11 +43,11 @@ namespace Games.TestGame
 
         protected override void OnLoadGraphics(Graphics graphics)
         {
-            Image image = graphics.GetImage("Resources", "player");
+            Image image = graphics.GetImage("Resources/player");
             _sprite = new Sprite(image, Game.Swatches.Player);
 
             // need to set LocalBounds because we draw our own sprites
-            var size = (Vector2f)(_sprite.Size * 0.75f);
+            var size = (Vector2F)(_sprite.Size * 0.75f);
             LocalBounds = new RectF(-(size / 2), size);
         }
 
@@ -90,8 +89,8 @@ namespace Games.TestGame
             }
 
             _rotRadians = (Math.PI / 180) * _rotation;
-            var returnedRadians = RotateVector2f(1.0,1.0,_rotRadians);
-            _radianAngle = new Vector2f((float)returnedRadians[0], (float)returnedRadians[1]);
+            var returnedRadians = RotateVector2F(1.0,1.0,_rotRadians);
+            _radianAngle = new Vector2F((float)returnedRadians[0], (float)returnedRadians[1]);
            
         }
 
@@ -104,7 +103,7 @@ namespace Games.TestGame
             }
         }*/
 
-        Double[] RotateVector2f(double x, double y, double degrees)
+        Double[] RotateVector2F(double x, double y, double degrees)
         {
             double[] result = new double[2];
             result[0] = x * Math.Cos(degrees) - y * Math.Sin(degrees);
@@ -124,25 +123,25 @@ namespace Games.TestGame
             CenterSprite(_sprite);
             _sprite.Render(graphics);
 
-            Game.Graphics.DrawLine(Game.Swatches.White, 1, Position, new Vector2f(Position.X, Position.Y) + _radianAngle*5);
+            Game.Graphics.DrawLine(Game.Swatches.White, 1, Position, new Vector2F(Position.X, Position.Y) + _radianAngle*5);
             
         }
 
         private void CenterSprite(Sprite sprite)
         {
-            var rotation = sprite.Rotation;
-            Vector2i size;
+            //var rotation = sprite.Rotation;
+            Vector2I size;
 
-            if (rotation == 0 || rotation == 2) // horizontal
-            {
+            //if (rotation == 0 || rotation == 2) // horizontal
+            //{
                 size = sprite.Size;
-            }
-            else // vertical
-            {
-                size = new Vector2i(sprite.Height, sprite.Width);
-            }
+            //}
+            //else // vertical
+            //{
+            //    size = new Vector2I(sprite.Height, sprite.Width);
+            //}
 
-            sprite.Position = (Vector2i)Position - (size / 2);
+            sprite.Position = (Vector2I)Position - (size / 2);
         }
     }
 }

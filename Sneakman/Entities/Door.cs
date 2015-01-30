@@ -32,11 +32,11 @@ namespace Games.TestGame
 
         protected override void OnLoadGraphics(Graphics graphics)
         {
-            Image image = graphics.GetImage("Resources", "door");
+            Image image = graphics.GetImage("Resources/door");
             _sprite = new Sprite(image, Game.Swatches.Door);
             
             // need to set LocalBounds because we draw our own sprites
-            var size = (Vector2f)(_sprite.Size);
+            var size = (Vector2F)(_sprite.Size);
             LocalBounds = new RectF(size, size);
         }
 
@@ -55,19 +55,19 @@ namespace Games.TestGame
 
         private void CenterSprite(Sprite sprite)
         {
-            var rotation = sprite.Rotation;
-            Vector2i size;
+            //var rotation = sprite.Rotation;
+            Vector2I size;
 
-            if (rotation == 0 || rotation == 2) // horizontal
-            {
-                size = sprite.Size;
-            }
-            else // vertical
-            {
-                size = new Vector2i(sprite.Height, sprite.Width);
-            }
+            //if (rotation == 0 || rotation == 2) // horizontal
+            //{
+            size = sprite.Size;
+            //}
+            //else // vertical
+            //{
+            //    size = new Vector2I(sprite.Height, sprite.Width);
+            //}
 
-            sprite.Position = (Vector2i)Position - (size);
+            sprite.Position = (Vector2I)Position - (size / 2);
         }
     }
 }

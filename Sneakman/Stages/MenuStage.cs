@@ -26,7 +26,7 @@ namespace Games.TestGame
             
         }
 
-        public void FlashText(Text obj, string text, Vector2i pos) //function to handle flashing text DUHHHHHH
+        public void FlashText(Text obj, string text, Vector2I pos) //function to handle flashing text DUHHHHHH
         {
             obj.Value = text;
             obj.Position = pos;
@@ -46,13 +46,13 @@ namespace Games.TestGame
         {
             Graphics.SetClearColor(Game.Swatches.ClearColor); // set the background color
 
-            font = Graphics.GetImage("Resources", "font"); // setting up text shit
+            font = Graphics.GetImage("Resources/font"); // setting up text shit
             menuText1 = Add(new Text(font, Game.Swatches.White), TEXT_DEPTH);
             menuText2 = Add(new Text(font, Game.Swatches.White), TEXT_DEPTH);
             flashText = Add(new Text(font, Game.Swatches.White), TEXT_DEPTH);
 
             menuText1.Value = ("SNEAKMAN:\nTACTICAL MAN AVOIDANCE");
-            menuText1.Position = Graphics.Size / 2 + new Vector2i(-menuText1.Width / 2, 30);
+            menuText1.Position = Graphics.Size / 2 + new Vector2I(-menuText1.Width / 2, 30);
         }
 
         // called each tick
@@ -66,7 +66,7 @@ namespace Games.TestGame
                 tick = 0;
             }
 
-            FlashText(menuText2, "Press START", Graphics.Size / 2 + new Vector2i(-menuText2.Width / 2, 10)); // will be changed and added into a stack function that makes it all neat
+            FlashText(menuText2, "Press START", Graphics.Size / 2 + new Vector2I(-menuText2.Width / 2, 10)); // will be changed and added into a stack function that makes it all neat
 
             if (Controls.A.JustPressed) Game.SetStage(new GameStage(Game));
         }

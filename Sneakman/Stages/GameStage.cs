@@ -23,7 +23,7 @@ namespace Games.TestGame
 
             /*
             Wall wall = Add(new Wall(), 1);
-            wall.Position = new Vector2f(Padding, Padding);
+            wall.Position = new Vector2F(Padding, Padding);
             Debug.Log("Wall created");*/
 
 
@@ -31,7 +31,7 @@ namespace Games.TestGame
             testMap.Populate(this);
 
             Player player = Add(new Player(), 1);
-            player.Position = new Vector2f(Padding * 2, Padding * 3);
+            player.Position = new Vector2F(Padding * 2, Padding * 3);
             Debug.Log("Player created");
         }
 

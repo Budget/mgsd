@@ -1,13 +1,12 @@
 using GameAPI;
 using GameAPI.BudgetBoy;
-using ResourceLibrary;
 
 namespace Games.TestGame
 {
     [GameInfo(
         Title = "Sneakman: Tactical Man Avoidance",
         AuthorName = "Psoeter n Krix",
-        Version = "0.0.4.1",
+        Version = "0.0.4.2",
         UpdateRate = 60
     )]
     [GraphicsInfo(Width = 240, Height = 240)]
@@ -25,7 +24,7 @@ namespace Games.TestGame
             SetStage(new Content(this));
         }
         
-        protected override void OnRegisterResourceTypes(ArchiveLibrary library)
+        protected override void OnRegisterResourceTypes(ResourceManager library)
         {
             base.OnRegisterResourceTypes(library);
 
@@ -34,10 +33,10 @@ namespace Games.TestGame
         }
         public static MapResource MapR;
 
-        protected override void OnLoadResources(ResourceVolume volume)
+        protected override void OnLoadResources(Resources volume)
         {
             base.OnLoadResources(volume);
-            MapR = volume.Get<MapResource>("Resources", "maps", "test");
+            MapR = volume.Get<MapResource>("Resources/maps/test");
             Debug.Log("Loaded test.map.");
 
             Debug.Log(MapR.Tiles.ToString());

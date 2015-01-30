@@ -38,9 +38,9 @@ namespace Games.TestGame
             {
 
                 menuText2.Value = (contentLoadNumber.ToString() + "/" + (gameSounds.Length - 1).ToString());
-                menuText2.Position = Graphics.Size / 2 + new Vector2i(-menuText2.Width / 2, 10);
+                menuText2.Position = Graphics.Size / 2 + new Vector2I(-menuText2.Width / 2, 10);
 
-                _audio1 = Audio.GetSound("Resources", "sounds", soundToLoad);
+                _audio1 = Audio.GetSound("Resources/sounds/" + soundToLoad);
                 _audio1.Play();
                 _audio1.Stop();
 
@@ -64,12 +64,12 @@ namespace Games.TestGame
         {
             Graphics.SetClearColor(Game.Swatches.ClearColor); // set the background color
 
-            font = Graphics.GetImage("Resources", "font");
+            font = Graphics.GetImage("Resources/font");
             menuText1 = Add(new Text(font, Game.Swatches.White), TEXT_DEPTH);
             menuText2 = Add(new Text(font, Game.Swatches.White), TEXT_DEPTH);
 
             menuText1.Value = ("LOADING");
-            menuText1.Position = Graphics.Size / 2 + new Vector2i(-menuText1.Width / 2, 30);
+            menuText1.Position = Graphics.Size / 2 + new Vector2I(-menuText1.Width / 2, 30);
             
             StartCoroutine(LoadContent);
 

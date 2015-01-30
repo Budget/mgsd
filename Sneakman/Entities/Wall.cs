@@ -15,7 +15,7 @@ namespace Games.TestGame
         protected override void OnEnterStage(Stage stage)
         {
             base.OnEnterStage(stage);
-            var size = new Vector2f(16, 16); //yay hardcoded
+            var size = new Vector2F(16, 16); //yay hardcoded
             LocalBounds = new RectF(size, size);
         }
     }

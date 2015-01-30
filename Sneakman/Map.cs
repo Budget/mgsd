@@ -7,7 +7,7 @@ namespace Games.TestGame
     {
         public new Main Game { get { return (Main)base.Game; } }
 
-        Tilemap tilemap = new Tilemap(new Vector2i(16, 16), new Vector2i(15, 15) );
+        Tilemap tilemap = new Tilemap(new Vector2I(16, 16), new Vector2I(15, 15));
 
         public Map() { }
 
@@ -27,13 +27,13 @@ namespace Games.TestGame
                         case '1':
                             tilemap.SetTile(y, map.Cols - 2 - x, _wall, Game.Swatches.Wall);
                             Wall wall = stage.Add(new Wall(), 1);
-                            wall.Position = new Vector2f(16 + (x * 16f), (16f - y) * 16f - 16f);
+                            wall.Position = new Vector2F(16 + (x * 16f), (16f - y) * 16f - 16f);
                             Debug.Log("Set wall.");
                             break;
                         case '2':
                             tilemap.SetTile(y, map.Cols - 2 - x, _wallV, Game.Swatches.Wall);
                             Wall wallV = stage.Add(new Wall(), 1);
-                            wallV.Position = new Vector2f(16 + (x * 16f), (16f - y) * 16f - 16f);
+                            wallV.Position = new Vector2F(16 + (x * 16f), (16f - y) * 16f - 16f);
                             Debug.Log("Set wallV.");
                             break;
                         case '3':
@@ -62,9 +62,9 @@ namespace Games.TestGame
         private Image _door;
         protected override void OnLoadGraphics(Graphics graphics)
         {
-            _wall = Game.Graphics.GetImage("Resources", "wall");
-            _wallV = Game.Graphics.GetImage("Resources", "wall_v");
-            _door = Game.Graphics.GetImage("Resources", "door");
+            _wall = Game.Graphics.GetImage("Resources/wall");
+            _wallV = Game.Graphics.GetImage("Resources/wall_v");
+            _door = Game.Graphics.GetImage("Resources/door");
         }
     }
 }
